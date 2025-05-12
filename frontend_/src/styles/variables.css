@@ -1,0 +1,78 @@
+:root {
+  /* Restaurant Theme Color Palette */
+  --primary: #2C1810;  /* Rich Brown */
+  --primary-light: #4A2C20;
+  --primary-dark: #1A0F0A;
+  --secondary: #D4AF37;  /* Gold */
+  --secondary-light: #E5C76B;
+  --secondary-dark: #B38F1A;
+  --accent: #C41E3A;  /* Burgundy */
+  --accent-light: #D6455C;
+  --accent-dark: #A01830;
+  --background: #FDF6F0;  /* Warm White */
+  --background-dark: #F5E6D9;
+  --text: #2C1810;
+  --text-light: #5C4033;
+  --text-lighter: #8B7355;
+  --white: #FFFFFF;
+  --success: #2E7D32;
+  --error: #C62828;
+  --warning: #F57F17;
+  --info: #1565C0;
+  
+  /* Enhanced Spacing */
+  --spacing-xxs: 0.125rem;
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+  --spacing-xxxl: 4rem;
+  
+  /* Enhanced Border Radius */
+  --border-radius-xs: 2px;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+  --border-radius-xxl: 24px;
+  --border-radius-full: 9999px;
+  
+  /* Enhanced Shadows */
+  --shadow-xs: 0 1px 2px rgba(44, 24, 16, 0.05);
+  --shadow-sm: 0 2px 4px rgba(44, 24, 16, 0.1);
+  --shadow-md: 0 4px 6px rgba(44, 24, 16, 0.1);
+  --shadow-lg: 0 10px 15px rgba(44, 24, 16, 0.1);
+  --shadow-xl: 0 20px 25px rgba(44, 24, 16, 0.1);
+  --shadow-inner: inset 0 2px 4px rgba(44, 24, 16, 0.06);
+  
+  /* Enhanced Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Typography */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* Z-index layers */
+  --z-negative: -1;
+  --z-elevate: 1;
+  --z-sticky: 100;
+  --z-drawer: 200;
+  --z-modal: 300;
+  --z-popover: 400;
+  --z-toast: 500;
+} 
