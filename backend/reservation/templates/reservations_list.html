@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>🗓️ Réservations</h2>
+
+<table border="1" cellpadding="10" cellspacing="0" style="width: 100%;">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Email</th>
+      <th>Téléphone</th>
+      <th>Date</th>
+      <th>Heure</th>
+      <th>Invités</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in reservations %}
+      <tr>
+        <td>{{ r.name }}</td>
+        <td>{{ r.email }}</td>
+        <td>{{ r.phone }}</td>
+        <td>{{ r.date }}</td>
+        <td>{{ r.time }}</td>
+        <td>{{ r.guests }}</td>
+        <td>{{ r.message }}</td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="7" style="text-align: center;">Aucune réservation</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block title %}Menu{% endblock %}
+
+{% block content %}
+
+<!-- Titre + Bouton Ajouter alignés -->
+<div style="display: flex; justify-content: space-between; align-items: center; margin: 30px 40px 10px;">
+    <h2 style="margin: 0;">🍽️ Notre Menu</h2>
+
+    {% if user.is_superuser %}
+    <a href="{% url 'add_dish' %}" style="
+        background-color: #FFD700;
+        color: black;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    " onmouseover="this.style.backgroundColor='#e6c200'" onmouseout="this.style.backgroundColor='#FFD700'">
+        ➕ Ajouter un plat
+    </a>
+    {% endif %}
+</div>
+
+<!-- Boutons de catégories -->
+<div style="margin-top: 20px; text-align: center;">
+    <a href="{% url 'menu' %}" class="cat-btn {% if not selected_category %}active{% endif %}">Tous</a>
+    {% for category in categories %}
+        <a href="?category={{ category.id }}" class="cat-btn {% if category.id == selected_category %}active{% endif %}">
+            {{ category.name }}
+        </a>
+    {% endfor %}
+</div>
+
+<!-- Liste des plats -->
+<div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 30px; justify-content: center;">
+    {% for dish in dishes %}
+        <div style="width: 260px; border: 1px solid #ddd; border-radius: 10px; overflow: hidden; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: relative;">
+            <img src="{{ dish.image.url }}" alt="{{ dish.name }}" style="width: 100%; height: 160px; object-fit: cover;">
+
+            <div style="padding: 12px;">
+                <h4 style="margin: 0 0 8px;">{{ dish.name }}</h4>
+                <p style="font-size: 0.9em; color: #555;">{{ dish.description|truncatewords:15 }}</p>
+                <strong style="color: #000;">{{ dish.price }} €</strong>
+            </div>
+
+            {% if user.is_superuser %}
+            
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>Aucun plat dans cette catégorie.</p>
+    {% endfor %}
+</div>
+
+<!-- Style des boutons -->
+<style>
+.cat-btn {
+    display: inline-block;
+    padding: 8px 18px;
+    margin: 6px;
+    background-color: #eee;
+    color: #333;
+    text-decoration: none;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s, color 0.3s;
+}
+.cat-btn:hover {
+    background-color: #ddd;
+}
+.cat-btn.active {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}
+</style>
+
+<!-- JS de confirmation de suppression -->
+<script>
+    function confirmerSuppression(event, platNom, url) {
+        event.preventDefault();
+        if (confirm(`Voulez-vous vraiment supprimer le plat "${platNom}" ?`)) {
+            window.location.href = url;
+        }
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}Liste des Plats{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">🍽️ Gestion des Plats</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="d-flex justify-content-end mb-3">
+        <a href="{% url 'add_dish' %}" class="btn btn-success">
+            <i class="fas fa-plus-circle"></i> Ajouter un plat
+        </a>
+    </div>
+
+    <table class="table table-hover align-middle table-bordered shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Image</th>
+                <th>Nom</th>
+                <th>Catégorie</th>
+                <th>Description</th>
+                <th>Prix (€)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dish in dishes %}
+                <tr>
+                    <td>
+                        {% if dish.image %}
+                            <img src="{{ dish.image.url }}" class="img-thumbnail" style="width: 80px;">
+                        {% else %}
+                            <span class="text-muted">Aucune image</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ dish.name }}</td>
+                    <td>{{ dish.category.name }}</td>
+                    <td>{{ dish.description }}</td>
+                    <td>{{ dish.price }}</td>
+                    <td>
+                        <a href="{% url 'edit_dish' dish.id %}" class="btn btn-sm btn-outline-primary me-2">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        <a href="{% url 'delete_dish' dish.id %}" class="btn btn-sm btn-outline-danger">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="6" class="text-center text-muted">Aucun plat trouvé.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
